@@ -2,9 +2,9 @@ name: Build & deploy serverless
 
 env:
   ARTIFACT_NAME: serverless.jar
-  AWS_ACCESS_KEY_ID: AKIAJVA45DO3KXTFKMLQ #${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_ACCESS_KEY: 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 #${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  S3_BUCKET_NAME: codedeploy.dhavalpandya.me #${{ secrets.S3_CODE_DEPLOY_BUCKET }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  S3_BUCKET_NAME: ${{ secrets.S3_CODE_DEPLOY_BUCKET }}
   AWS_REGION: us-east-1
 
 on:

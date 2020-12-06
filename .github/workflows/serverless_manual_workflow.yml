@@ -1,0 +1,47 @@
+name: Build & deploy serverless manually
+
+env:
+  ARTIFACT_NAME: serverless.jar
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  S3_BUCKET_NAME: ${{ secrets.S3_CODE_DEPLOY_BUCKET }}
+  AWS_REGION: us-east-1
+
+on: [workflow_dispatch]
+
+jobs:
+  ci_cd:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: build with maven
+        run: |
+          echo "${{ env.ARTIFACT_NAME}}"
+          pwd
+          ls
+          mvn package
+          pwd
+          ls -al
+          ls -al target/
+
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: copy artifacts to s3
+        run: |
+          aws s3 cp target/${{env.ARTIFACT_NAME}} s3://${{ env.S3_BUCKET_NAME }}
+
+      - name: upload code to aws lambda
+        run: |
+          aws lambda update-function-code --function-name terraform_lambda --s3-bucket ${{ env.S3_BUCKET_NAME }} --s3-key ${{env.ARTIFACT_NAME}}
+          exit

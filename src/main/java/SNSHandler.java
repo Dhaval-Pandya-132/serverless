@@ -72,7 +72,7 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
 
         final AmazonDynamoDB ddb = AmazonDynamoDBClientBuilder.defaultClient();
 
-    if(!messageType.equals("deleteAnswer")) {
+//    if(!messageType.equals("deleteAnswer")) {
         try {
             Map<String, AttributeValue> returned_item =
                     ddb.getItem(request).getItem();
@@ -98,7 +98,9 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
             System.err.println(e.getErrorMessage());
             System.exit(1);
         }
-    }
+//    }
+        String url="";
+        String questionUrl="";
         switch(messageType) {
             case "addAnswer":
 
@@ -108,8 +110,11 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
                 logger.log("answertext : "+ answertext);
                 logger.log("username : "+ username);
 
-                String url ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId+"/answer/"+answerId;
-                 HTMLBODY = "<h1>New Answer is Added </h1>"
+                 url ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId+"/answer/"+answerId;
+                 questionUrl ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
+
+                HTMLBODY = "<h1>New Answer is Added </h1>"
+                        + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>"
                         + "<p><b>Question Text:</b> "+questionText
                         + "<p><b>Answer Text:</b> "+answertext
                         + "<p><b>Answer URL:</b>"+url +" <a href='"+url+"'>" ;
@@ -130,7 +135,10 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
                 logger.log("username : "+ username);
 
                  url ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId+"/answer/"+answerId;
-                 HTMLBODY = "<h1>Answer is updated for "+questionText +"</h1>"
+                 questionUrl ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
+
+                HTMLBODY = "<h1>Answer is updated for "+questionText +"</h1>"
+                        + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>"
                         + "<p><b>Question Text:</b> "+questionText
                         + "<p><b>Answer Text:</b> "+answertext
                         + "<p><b>Answer URL:</b>"+url +" <a href='"+url+"'>" ;
@@ -152,7 +160,10 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
                 logger.log("username : "+ username);
 
                 url ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId+"/answer/"+answerId;
+                questionUrl ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
+
                 HTMLBODY = "<h1>File uploaded  </h1>"
+                        + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>"
                         + "<p><b>Question Text:</b> "+questionText
                         + "<p><b>Answer Text:</b> "+answertext
                         + "<p><b>Answer URL:</b>"+url +" <a href='"+url+"'>" ;
@@ -171,9 +182,11 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
                 logger.log("questionText : "+ questionText);
                 logger.log("answertext : "+ answertext);
                 logger.log("username : "+ username);
+                questionUrl ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
 
                // url ="http://prod.dhavalpandya.me/v1/question/"+questionId+"/answerId/"+answerId;
                 HTMLBODY = "<h1>Answer is deleted"+"</h1>"
+                        + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>"
                         + "<p><b>Question Text:</b> "+questionText
                         + "<p><b>Answer text was:</b> "+answertext;
 

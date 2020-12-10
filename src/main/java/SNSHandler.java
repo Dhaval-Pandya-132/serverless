@@ -110,14 +110,14 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
                 logger.log("answertext : "+ answertext);
                 logger.log("username : "+ username);
 
-                 url ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId+"/answer/"+answerId;
-                 questionUrl ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
+                 url ="https://prod.dhavalpandya.me/webapp/v1/question/"+questionId+"/answer/"+answerId;
+                 questionUrl ="https://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
 
                 HTMLBODY = "<h1>New Answer is Added </h1>"
-                        + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>"
-                        + "<p><b>Question Text:</b> "+questionText
-                        + "<p><b>Answer Text:</b> "+answertext
-                        + "<p><b>Answer URL:</b>"+url +" <a href='"+url+"'>" ;
+                        + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'></p>"
+                        + "<p><b>Question Text:</b> "+questionText + "</p>"
+                        + "<p><b>Answer Text:</b> "+answertext + "</p>"
+                        + "<p><b>Answer URL:</b>"+url +" <a href='"+url+"'>" + "</p>" ;
 
                 logger.log("HTML body : "+ HTMLBODY);
 
@@ -134,14 +134,14 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
                 logger.log("answertext : "+ answertext);
                 logger.log("username : "+ username);
 
-                 url ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId+"/answer/"+answerId;
-                 questionUrl ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
+                 url ="https://prod.dhavalpandya.me/webapp/v1/question/"+questionId+"/answer/"+answerId;
+                 questionUrl ="https://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
 
                 HTMLBODY = "<h1>Answer is updated for "+questionText +"</h1>"
-                        + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>"
-                        + "<p><b>Question Text:</b> "+questionText
-                        + "<p><b>Answer Text:</b> "+answertext
-                        + "<p><b>Answer URL:</b>"+url +" <a href='"+url+"'>" ;
+                        + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>" + "</p>"
+                        + "<p><b>Question Text:</b> "+questionText + "</p>"
+                        + "<p><b>Answer Text:</b> "+answertext+ "</p>"
+                        + "<p><b>Answer URL:</b>"+url +" <a href='"+url+"'>"+ "</p>" ;
 
                 logger.log("HTML body : "+ HTMLBODY);
 
@@ -159,8 +159,8 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
                 logger.log("answertext : "+ answertext);
                 logger.log("username : "+ username);
 
-                url ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId+"/answer/"+answerId;
-                questionUrl ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
+                url ="https://prod.dhavalpandya.me/webapp/v1/question/"+questionId+"/answer/"+answerId;
+                questionUrl ="https://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
 
                 HTMLBODY = "<h1>File uploaded  </h1>"
                         + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>"
@@ -182,13 +182,13 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
                 logger.log("questionText : "+ questionText);
                 logger.log("answertext : "+ answertext);
                 logger.log("username : "+ username);
-                questionUrl ="http://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
+                questionUrl ="https://prod.dhavalpandya.me/webapp/v1/question/"+questionId;
 
                // url ="http://prod.dhavalpandya.me/v1/question/"+questionId+"/answerId/"+answerId;
-                HTMLBODY = "<h1>Answer is deleted"+"</h1>"
-                        + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>"
-                        + "<p><b>Question Text:</b> "+questionText
-                        + "<p><b>Answer text was:</b> "+answertext;
+                HTMLBODY = "<h1>Answer is deleted"+"</h1>"+ "</p>"
+                        + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>"+ "</p>"
+                        + "<p><b>Question Text:</b> "+questionText+ "</p>"
+                        + "<p><b>Answer text was:</b> "+answertext+ "</p>";
 
 
 

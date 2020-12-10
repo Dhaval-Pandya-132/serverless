@@ -55,7 +55,7 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
         answertext = Messages[4];
         username = Messages[5];
 
-        String shaString =  answerId+questionId+answertext+username;
+        String shaString =  messageType+answerId+questionId+answertext+username;
 
 
 

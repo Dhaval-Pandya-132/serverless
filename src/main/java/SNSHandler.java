@@ -117,7 +117,7 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
                         + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'></p>"
                         + "<p><b>Question Text:</b> "+questionText + "</p>"
                         + "<p><b>Answer Text:</b> "+answertext + "</p>"
-                        + "<p><b>Answer URL:</b> "+url +" <a href='"+url+"'>" + "</p>" ;
+                        + "<p><b>Answer URL:</b> "+url +" <a href='"+url+"'>" ;
 
                 logger.log("HTML body : "+ HTMLBODY);
 
@@ -141,7 +141,7 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
                         + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>" + "</p>"
                         + "<p><b>Question Text:</b> "+questionText + "</p>"
                         + "<p><b>Answer Text:</b> "+answertext+ "</p>"
-                        + "<p><b>Answer URL:</b> "+url +" <a href='"+url+"'>"+ "</p>" ;
+                        + "<b>Answer URL:</b> "+url +" <a href='"+url+"'>" ;
 
                 logger.log("HTML body : "+ HTMLBODY);
 
@@ -166,7 +166,7 @@ public class SNSHandler implements RequestHandler<SNSEvent, String> {
                         + "<p><b>Question URL:</b> "+questionUrl +" <a href='"+questionUrl+"'>"
                         + "<p><b>Question Text:</b> "+questionText
                         + "<p><b>Answer Text:</b> "+answertext
-                        + "<p><b>Answer URL:</b> "+url +" <a href='"+url+"'>" ;
+                        + "<b>Answer URL:</b> "+url +" <a href='"+url+"'>" ;
 
                 logger.log("HTML body : "+ HTMLBODY);
 
